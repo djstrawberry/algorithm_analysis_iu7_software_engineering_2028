@@ -3,21 +3,6 @@
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[flow]
-\node[term] (start) at (0,0.0) {Начало: $a,N,x$};
-\node[proc] (init) at (0,-1.6) {$i\gets0$};
-\node[decision] (loop) at (0,-3.9) {$i<N$};
-\node[decision] (equal) at (0,-6.7) {$a_i=x$};
-\node[proc] (inc) at (0,-9.0) {$i\gets i+1$};
-\node[term] (miss) at (5,-3.9) {Возврат $-1$};
-\node[term] (found) at (5,-6.7) {Возврат $i$};
-\draw[arrow] (start)--(init);
-\draw[arrow] (init)--(loop);
-\draw[arrow] (loop)--node[left]{Да}(equal);
-\draw[arrow] (loop)--node[above]{Нет}(miss);
-\draw[arrow] (equal)--node[above]{Да}(found);
-\draw[arrow] (equal)--node[left]{Нет}(inc);
-\draw[arrow] (inc.west)--(-3,-9.0)--(-3,-2.5)--(0,-2.5)--(loop.north);
-\end{tikzpicture}
+\includegraphics[width=\linewidth,height=0.86\textheight,keepaspectratio]{figures/linear_report.pdf}
 \caption{Схема линейного поиска}\label{fig:linear}
 \end{figure}

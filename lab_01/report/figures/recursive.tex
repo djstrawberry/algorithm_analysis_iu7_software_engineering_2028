@@ -4,36 +4,6 @@
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[flow]
-\node[term] (start) at (0,0.0) {Начало: $a,N,x$};
-\node[decision] (empty) at (0,-2.1) {$N=0$};
-\node[term] (miss) at (4.8,-2.1) {Возврат $-1$};
-\node[proc] (mid) at (0,-4.4) {$M\gets\lfloor N/2\rfloor$};
-\node[decision] (equal) at (0,-6.7) {$a_M=x$};
-\node[term] (found) at (4.8,-6.7) {Возврат $M$};
-\node[decision] (lt) at (0,-9.5) {$a_M<x$};
-\node[proc] (lcall) at (-3.2,-12.0) {$q\gets\mathrm{B}(a,M,x)$};
-\node[proc] (rcall) at (3.2,-12.0) {$q\gets\mathrm{B}(a+M+1,$\\$N-M-1,x)$};
-\foreach \n in {lcall,rcall} {
-\draw ([xshift=2mm]\n.south west)--([xshift=2mm]\n.north west);
-\draw ([xshift=-2mm]\n.south east)--([xshift=-2mm]\n.north east);
-}
-\node[term] (lret) at (-3.2,-14.5) {Возврат $q$};
-\node[decision] (qmiss) at (3.2,-14.5) {$q=-1$};
-\node[term] (rmiss) at (6.2,-17.0) {Возврат $-1$};
-\node[term] (rret) at (1.7,-17.0) {Возврат $M+1+q$};
-\draw[arrow] (start)--(empty);
-\draw[arrow] (empty)--node[above]{Да}(miss);
-\draw[arrow] (empty)--node[left]{Нет}(mid);
-\draw[arrow] (mid)--(equal);
-\draw[arrow] (equal)--node[above]{Да}(found);
-\draw[arrow] (equal)--node[left]{Нет}(lt);
-\draw[arrow] (lt.west)-|node[above,near start]{Нет}(lcall.north);
-\draw[arrow] (lt.east)-|node[above,near start]{Да}(rcall.north);
-\draw[arrow] (lcall)--(lret);
-\draw[arrow] (rcall)--(qmiss);
-\draw[arrow] (qmiss.east)-|node[above,near start]{Да}(rmiss.north);
-\draw[arrow] (qmiss.south)|-node[above,near end]{Нет}(1.7,-16.0)--(rret.north);
-\end{tikzpicture}
+\includegraphics[width=\linewidth,height=0.86\textheight,keepaspectratio]{figures/recursive_report.pdf}
 \caption{Схема рекурсивного бинарного поиска}\label{fig:recursive}
 \end{figure}

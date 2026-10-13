@@ -1,0 +1,11 @@
+% !TEX root = ../report.tex
+\tikzset{sample/.style={font=\sffamily\fontsize{11}{13}\selectfont,
+ term/.style={draw,rectangle,rounded corners=5mm,minimum width=44mm,minimum height=11mm,text width=42mm,inner sep=1mm,align=center},
+ proc/.style={draw,rectangle,minimum width=44mm,minimum height=11mm,text width=42mm,inner sep=1mm,align=center},
+ decision/.style={rectangle,minimum width=44mm,font=\sffamily\fontsize{10}{12}\selectfont,minimum height=20mm,text width=32mm,inner sep=0pt,align=center,
+ append after command={\pgfextra{\draw (\tikzlastnode.center) ++(-22mm,0) -- ++(22mm,10mm) -- ++(22mm,-10mm) -- ++(-22mm,-10mm) -- cycle;}}},
+ arrow/.style={-{Stealth[length=2mm]},semithick}},
+ inputnote/.style={font=\sffamily\fontsize{10}{12}\selectfont,align=center,text width=51mm,inner sep=0pt}}
+
+\tikzset{decisiontall/.style={rectangle,font=\sffamily\fontsize{10}{12}\selectfont,minimum width=44mm,minimum height=24mm,text width=32mm,inner sep=0pt,align=center,
+ append after command={\pgfextra{\draw (\tikzlastnode.center) ++(-22mm,0) -- ++(22mm,12mm) -- ++(22mm,-12mm) -- ++(-22mm,-12mm) -- cycle;}}}}

@@ -2,10 +2,9 @@
     "cmake.sourceDirectory": "/home/anechka/algorithm_analysis_iu7_software_engineering_2028/lab_01",
     "latex-workshop.latex.tools": [
         {
-            "name": "latexmk-xelatex",
-            "command": "latexmk",
+            "name": "xelatex",
+            "command": "xelatex",
             "args": [
-                "-xelatex",
                 "-synctex=1",
                 "-interaction=nonstopmode",
                 "-file-line-error",
@@ -17,13 +16,15 @@
     ],
     "latex-workshop.latex.recipes": [
         {
-            "name": "XeLaTeX (latexmk)",
+            "name": "XeLaTeX (2 прохода, без Perl)",
             "tools": [
-                "latexmk-xelatex"
+                "xelatex",
+                "xelatex"
             ]
         }
     ],
     "latex-workshop.latex.recipe.default": "first",
     "latex-workshop.latex.outDir": "%DIR%",
-    "latex-workshop.latex.rootFile.indicator": "\\begin{document}"
+    "latex-workshop.latex.rootFile.indicator": "\\begin{document}",
+    "latex-workshop.latex.clean.method": "glob"
 }

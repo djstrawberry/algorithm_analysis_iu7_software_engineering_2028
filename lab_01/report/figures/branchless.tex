@@ -4,43 +4,6 @@
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[flow]
-\node[term] (start) at (0,0) {Начало: $a,N,x$};
-\node[decision] (empty) at (0,-2.1) {$N=0$};
-\node[term] (emptyret) at (5.1,-2.1) {Возврат $-1$};
-\node[proc] (init) at (0,-4.2) {$b\gets0$, $e\gets N$\\$s\gets\texttt{bit\_floor}(N)$};
-\node[decision] (prepare) at (0,-6.7) {$s\ne N$ и\\$a_s<x$};
-\node[proc] (tail) at (0,-9) {$e\gets e-s-1$};
-\node[decision] (zero) at (0,-11.3) {$e=0$};
-\node[term] (earlyret) at (5.1,-11.3) {Возврат $-1$};
-\node[proc] (restart) at (0,-13.6) {$s\gets\texttt{bit\_ceil}(e)$\\$b\gets N-s$};
-\node[proc] (halve) at (0,-15.7) {$s\gets s/2$};
-\node[decision] (loop) at (0,-17.8) {$s\ne0$};
-\node[decision] (compare) at (0,-20.3) {$a_{b+s}<x$};
-\node[proc] (advance) at (0,-22.6) {$b\gets b+s$};
-\node[proc] (candidate) at (5.1,-17.8) {$i\gets b+$\\$\texttt{compare}(a_b,x)$};
-\node[decision] (equal) at (5.1,-20.3) {$i<N$ и\\$a_i=x$};
-\node[term] (found) at (5.1,-22.6) {Возврат $i$};
-\node[term] (miss) at (10.0,-22.6) {Возврат $-1$};
-\draw[arrow] (start)--(empty);
-\draw[arrow] (empty)--node[above]{Да}(emptyret);
-\draw[arrow] (empty)--node[left]{Нет}(init);
-\draw[arrow] (init)--(prepare);
-\draw[arrow] (prepare)--node[left]{Да}(tail);
-\draw[arrow] (prepare.west)--node[above]{Нет}(-3.7,-6.7)--(-3.7,-14.9)--(0,-14.9)--(halve.north);
-\draw[arrow] (tail)--(zero);
-\draw[arrow] (zero)--node[above]{Да}(earlyret);
-\draw[arrow] (zero)--node[left]{Нет}(restart);
-\draw[arrow] (restart)--(halve);
-\draw[arrow] (halve)--(loop);
-\draw[arrow] (loop)--node[left]{Да}(compare);
-\draw[arrow] (loop)--node[above]{Нет}(candidate);
-\draw[arrow] (compare)--node[left]{Да}(advance);
-\draw[arrow] (compare.west)--node[above]{Нет}(-3.7,-20.3)--(-3.7,-15.7)--(halve.west);
-\draw[arrow] (advance.west)--(-4.3,-22.6)--(-4.3,-15.7)--(halve.west);
-\draw[arrow] (candidate)--(equal);
-\draw[arrow] (equal)--node[left]{Да}(found);
-\draw[arrow] (equal.east)--node[above]{Нет}(10.0,-20.3)--(miss.north);
-\end{tikzpicture}
+\includegraphics[width=\linewidth,height=0.86\textheight,keepaspectratio]{figures/branchless_report.pdf}
 \caption{Схема бинарного поиска без ветвления}\label{fig:branchless}
 \end{figure}
