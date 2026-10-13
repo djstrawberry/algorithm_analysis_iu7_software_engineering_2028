@@ -1,0 +1,3 @@
+/home/anechka/algorithm_analysis_iu7_software_engineering_2028/lab_01/build/CMakeFiles/app.dir
+/home/anechka/algorithm_analysis_iu7_software_engineering_2028/lab_01/build/CMakeFiles/edit_cache.dir
+/home/anechka/algorithm_analysis_iu7_software_engineering_2028/lab_01/build/CMakeFiles/rebuild_cache.dir

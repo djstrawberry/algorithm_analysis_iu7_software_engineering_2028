@@ -1,0 +1,87 @@
+% !TEX root = report.tex
+\documentclass[a4paper,14pt]{extreport}
+\usepackage{fontspec}
+\IfFileExists{.fonts/Times.TTF}{
+\setmainfont[Path=.fonts/,BoldFont=Timesbd.TTF,ItalicFont=Timesi.TTF,BoldItalicFont=Timesbi.TTF]{Times.TTF}
+}{\setmainfont{Times New Roman}}
+\setsansfont{Liberation Sans}
+\IfFileExists{.fonts/cour.ttf}{
+\setmonofont[Path=.fonts/,BoldFont=courbd.ttf,ItalicFont=couri.ttf,BoldItalicFont=courbi.ttf]{cour.ttf}
+}{\setmonofont{Courier New}}
+\usepackage[english,russian]{babel}
+\usepackage{amsmath,amssymb,geometry,setspace,indentfirst,graphicx}
+\usepackage{titlesec,tocloft,caption,float,array,tabularx,longtable}
+\usepackage{listings,enumitem,lastpage}
+\usepackage[figure,table]{totalcount}
+\usepackage{tikz,pgfplots}
+\usetikzlibrary{arrows.meta,shapes.geometric,shapes.misc,shapes.symbols,positioning,calc}
+\pgfplotsset{compat=1.18}
+\usepackage[hidelinks,unicode]{hyperref}
+\geometry{left=30mm,right=15mm,top=20mm,bottom=20mm,footskip=7.5mm}
+\makeatletter
+\renewcommand\normalsize{\@setfontsize\normalsize{14pt}{17pt}}
+\renewcommand{\@biblabel}[1]{#1.}
+\makeatother
+\normalsize
+\setstretch{1.2352941176}
+\setlength{\parindent}{12.5mm}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{3em}
+\pagestyle{plain}
+\frenchspacing
+\titleformat{\chapter}[block]{\normalfont\bfseries\fontsize{16}{24}\selectfont}{\thechapter}{.5em}{}
+\titleformat{name=\chapter,numberless}[block]{\normalfont\bfseries\fontsize{16}{24}\selectfont\centering}{}{0pt}{}
+\titleformat{\section}{\normalfont\bfseries\fontsize{14}{21}\selectfont}{\thesection}{.5em}{}
+\titlespacing*{\chapter}{12.5mm}{0pt}{21pt}
+\titlespacing*{\section}{12.5mm}{21pt}{21pt}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftchapfont}{\normalfont}
+\renewcommand{\cftchappagefont}{\normalfont}
+\setlength{\cftbeforechapskip}{0pt}
+\renewcommand{\cfttoctitlefont}{\hfill\normalfont\bfseries\fontsize{16}{24}\selectfont}
+\renewcommand{\cftaftertoctitle}{\hfill\mbox{}}
+\setlength{\cftbeforetoctitleskip}{0pt}
+\setlength{\cftaftertoctitleskip}{21pt}
+\addto\captionsrussian{\renewcommand{\contentsname}{СОДЕРЖАНИЕ}\renewcommand{\figurename}{Рисунок}}
+\DeclareCaptionLabelSeparator{gostdash}{~---~}
+\captionsetup{labelsep=gostdash,font=small}
+\captionsetup[figure]{justification=centering}
+\captionsetup[table]{justification=raggedright,singlelinecheck=false,position=top}
+\setlist[enumerate]{label=\arabic*),labelindent=12.5mm,leftmargin=*,align=left,widest=11,labelsep=2mm,nosep}
+\setlist[itemize]{label=---,labelindent=12.5mm,leftmargin=*,align=left,labelsep=2mm,nosep}
+\lstset{language=C,numberbychapter=false,basicstyle=\fontsize{12}{14.4}\selectfont\ttfamily,
+ columns=fullflexible,keepspaces=true,showstringspaces=false,breaklines=true,
+ frame=single,captionpos=t,aboveskip=10pt,belowskip=10pt,tabsize=4}
+\renewcommand{\lstlistingname}{Листинг}
+\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\thetable}{\arabic{table}}
+\renewcommand{\theequation}{\arabic{equation}}
+\usepackage{chngcntr}
+\counterwithout{figure}{chapter}\counterwithout{table}{chapter}
+\counterwithout{equation}{chapter}
+\newcommand{\structchapter}[1]{\chapter*{#1}\addcontentsline{toc}{chapter}{#1}}
+\newcommand{\tabfont}{\singlespacing\fontsize{12}{14}\selectfont\renewcommand{\arraystretch}{1.3}\setlength{\extrarowheight}{2mm}}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\tikzset{flow/.style={font=\fontsize{12}{14}\selectfont,node distance=7mm and 14mm},
+ term/.style={draw,rectangle,rounded corners=4.5mm,minimum width=42mm,minimum height=9mm,text width=40mm,inner sep=1mm,align=center},
+ proc/.style={draw,rectangle,minimum width=42mm,minimum height=10mm,text width=40mm,inner sep=1mm,align=center},
+ decision/.style={draw,diamond,aspect=2,inner sep=0pt,minimum width=42mm,minimum height=21mm,text width=20mm,align=center},
+ call/.style={draw,rectangle split,rectangle split horizontal,rectangle split parts=3,minimum height=13mm,align=center},
+ arrow/.style={-{Stealth[length=2mm]},thick}}
+
+% ГОСТ 7.32-2017, п. 6.16: номер записи начинается с абзацного отступа.
+\makeatletter
+\renewenvironment{thebibliography}[1]
+ {\chapter*{\bibname}%
+  \list{\@biblabel{\@arabic\c@enumiv}}%
+   {\settowidth\labelwidth{\@biblabel{#1}}%
+    \setlength{\labelsep}{2mm}%
+    \setlength{\leftmargin}{\dimexpr12.5mm+\labelwidth+\labelsep\relax}%
+    \def\makelabel##1{##1\hfil}%
+    \usecounter{enumiv}%
+    \let\p@enumiv\@empty
+    \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+  \sloppy\clubpenalty4000\widowpenalty4000}
+ {\endlist}
+\makeatother

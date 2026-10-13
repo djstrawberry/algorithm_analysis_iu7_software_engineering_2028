@@ -1,0 +1,29 @@
+{
+    "cmake.sourceDirectory": "/home/anechka/algorithm_analysis_iu7_software_engineering_2028/lab_01",
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk-xelatex",
+            "command": "latexmk",
+            "args": [
+                "-xelatex",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-halt-on-error",
+                "%DOC%"
+            ],
+            "cwd": "%DIR%"
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "XeLaTeX (latexmk)",
+            "tools": [
+                "latexmk-xelatex"
+            ]
+        }
+    ],
+    "latex-workshop.latex.recipe.default": "first",
+    "latex-workshop.latex.outDir": "%DIR%",
+    "latex-workshop.latex.rootFile.indicator": "\\begin{document}"
+}
